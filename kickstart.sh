@@ -2,10 +2,10 @@
 
 # Init basic tools
 init(){
-  sudo apt install -y build-essential gcc make perl dkms
-  sudo apt update
-  sudo apt upgrade
-  sudo apt dist-upgrade
+  apt install -y build-essential gcc make perl dkms
+  apt update
+  apt upgrade
+  apt dist-upgrade
   
   ssh-keygen -t rsa
 }
@@ -49,11 +49,11 @@ update_sources(){
 
 # Install usefull tools
 install_tools(){
-  sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade;
-  sudo apt install build-essential 			\
-  				kubuntu-restricted-extras 		\
-  				diffpdf 						          \
-  				dmidecode 						        \
+  apt update && apt -y upgrade &&  apt -y dist-upgrade;
+  apt install build-essential 			    \
+  				  kubuntu-restricted-extras 	\
+  				  diffpdf 						        \
+  				  dmidecode 						      \
     				ffmpeg 							        \
     				gimp 							          \
     				gimp-data-extras 				    \
@@ -95,10 +95,10 @@ install_tools(){
 
 # Docker and docker-compose
 install_docker(){ 
-  sudo apt install docker-ce
-  sudo usermod -aG docker ${USER}
-  sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
+  apt install docker-ce
+  usermod -aG docker ${USER}
+  curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+  chmod +x /usr/local/bin/docker-compose
 }
 
 # Pycharm
@@ -115,7 +115,7 @@ install_pycharm(){
     echo 'SUCCESS. Package passes checksum.';
   fi
 
-  sudo tar xvzf ./pycharm-professional-2019.3.3.tar.gz -C /usr/local/lib
+  tar xvzf ./pycharm-professional-2019.3.3.tar.gz -C /usr/local/lib
   popd
 }
 
@@ -123,17 +123,23 @@ install_pycharm(){
 # Spotify
 install_spotify(){
   curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
-  sudo apt-get install spotify-client
+  apt-get install spotify-client
 }
 
 # Visual Code
 install_vcode(){
   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-  sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
-  sudo apt-get install code
+  install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+  apt-get install code
 }
 
 ########################################################################################################################
+
+if [[ $UID != 0 ]]; then
+    echo "Please run this script with sudo:"
+    echo "sudo $0 $*"
+    exit 1
+fi
 
 init
 update_sources
