@@ -1,0 +1,44 @@
+#x Last update 2019-11-02
+
+#_ chrome-remote-desktop.list
+deb [arch=amd64] http://dl.google.com/linux/chrome-remote-desktop/deb stable main
+
+#_ docker.list
+# 2019-11-02 Eoan not yet available
+deb [arch=amd64] https://download.docker.com/linux/ubuntu disco stable
+
+#_ gimp.list
+deb http://ppa.launchpad.net/otto-kesselgulasch/gimp/ubuntu eoan main
+
+#_ google-chrome.list
+deb [arch=amd64] http://dl.google.com/linux/chrome/deb stable main
+
+#_ graphics-drivers-ppa.list
+deb http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu eoan main
+
+#_ inkscape_dev-stable.list
+# 2019-11-02 Disabled until eoan available (use default inkscape)
+# deb http://ppa.launchpad.net/inkscape.dev/stable/ubuntu eoan main
+
+#_ insync.list
+deb http://apt.insync.io/ubuntu eoan non-free contrib
+
+#_ kubuntu-ppa-backports.list
+deb http://ppa.launchpad.net/kubuntu-ppa/backports/ubuntu eoan main
+
+#_ nodesource.list
+deb https://deb.nodesource.com/node_10.x eoan main
+
+#_ skype-stable.list
+deb [arch=amd64] https://repo.skype.com/deb stable main
+
+#_ teejee2008-ubuntu-ppa.list
+# Provides TimeShift (see var/lib/apt/lists/, wajig detail timeshift)
+#   which looks useful
+deb http://ppa.launchpad.net/teejee2008/ppa/ubuntu eoan main
+
+#_ spotify.list
+deb http://repository.spotify.com stable non-free
+
+#_ vscode.list
+deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main  
